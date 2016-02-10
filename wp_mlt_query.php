@@ -3,7 +3,7 @@
 /**
  * WordPress "More Like This" Query class
  * 
- * @link https://github.com/rcoll
+ * @link https://github.com/rcoll/WP_MLT_Query
  */
 class WP_MLT_Query {
 
