@@ -11,7 +11,7 @@ $mlt = new WP_MLT_Query( array(
 	'fields' => 'all', 
 ));
 
-if ( $query->results->have_posts() ) : while ( $query->results->have_posts() ) : $query->results->the_post();
+if ( $mlt->results->have_posts() ) : while ( $mlt->results->have_posts() ) : $mlt->results->the_post();
 	the_title(); echo '<br />';
 endwhile; endif;
 ```
