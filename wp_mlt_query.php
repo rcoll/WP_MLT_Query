@@ -131,8 +131,8 @@ class WP_MLT_Query {
 		$mlt_post = get_post( $args['p'] );
 		
 		// Get the posts categories, tags, and words
-		$categories = wp_get_post_categories( $mlt_post_id, array( 'fields' => 'ids' ) );
-		$tags = wp_get_post_tags( $mlt_post_id, array( 'fields' => 'ids' ) );
+		$categories = wp_get_post_categories( $args['p'], array( 'fields' => 'ids', 'orderby' => 'count' ) );
+		$tags = wp_get_post_tags( $args['p'], array( 'fields' => 'ids', 'orderby' => 'count' ) );
 		$words = $this->get_sanitized_word_array( $mlt_post->post_content );
 		// Get the first keyword for this article
 		$keyword = $this->get_keyword( $words );
