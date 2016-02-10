@@ -139,6 +139,19 @@ class WP_MLT_Query {
 			'p' => absint( $mlt_post_id ), 
 			'fields' => 'ids', 
 		));
+
+		// Formulate cache key
+		$cache_key = 'mltq_' . md5( serialize( $args ) );
+
+		// Try to get results from the cache
+		$posts = wp_cache_get( $cache_key, 'mlt' );
+
+		// If we have cache, use it and return
+		if ( $posts ) {
+			$this->results = $posts;
+
+			return;
+		}
 		
 		// Get the post object to compare
 		$mlt_post = get_post( $args['p'] );
@@ -173,7 +186,7 @@ class WP_MLT_Query {
 			unset( $posts[count($posts) - 1] );
 		}
 		
-		// Return in the format requested
+		// Set the result in the requested format
 		if ( 'ids' == $args['fields'] ) {
 			$this->results = $posts;
 		} elseif ( 'all' == $args['fields'] ) {
@@ -181,6 +194,8 @@ class WP_MLT_Query {
 		} else {
 			$this->results = $posts;
 		}
+
+		wp_cache_set( $cache_key, $posts, 'mlt', 3600 );
 	}
 }
 
