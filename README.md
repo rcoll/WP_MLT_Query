@@ -4,7 +4,8 @@ WordPress "More Like This" Query class for getting highly relevant related posts
 
 ## Usage
 
-```$query = new WP_MLT_Query( array( 
+```php
+$query = new WP_MLT_Query( array( 
 	'posts_per_page' => 6, 
 	'p' => 587936, 
 	'fields' => 'all', 
