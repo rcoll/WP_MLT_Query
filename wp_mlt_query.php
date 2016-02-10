@@ -184,14 +184,4 @@ class WP_MLT_Query {
 	}
 }
 
-$query = new WP_MLT_Query( array( 
-	'posts_per_page' => 6, 
-	'p' => 587936, 
-	'fields' => 'all', 
-));
-
-if ( $query->results->have_posts() ) : while ( $query->results->have_posts() ) : $query->results->the_post();
-	the_title(); echo '<br />';
-endwhile; endif;
-
 // omit
